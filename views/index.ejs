@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+
+<header class="blogs">
+    <h1>Welcome to DevBlog</h1>
+    <p>Read clean insights or create your own thoughts instantly.</p>
+</header>
+
+<section class="posts-grid">
+    <% if (posts.length === 0) { %>
+        <p class="no-posts">No posts available.</p>
+    <% } else { %>
+        <% posts.forEach(post => { %>
+            <article class="post-card">
+                <span class="post-date"><%= post.Date.toLocaleDateString() %></span>
+                <h2><a href="/posts/<%= post.id %>"><%= post.title %></a></h2>
+                <p><%= post.content %></p>
+                <a class="read-more" href="/posts/<%= post.id %>">Read more</a>
+            </article>
+        <% }); %>
+    <% } %>
+</section>
+
+<%- include('partials/footer') %>

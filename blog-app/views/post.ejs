@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+
+<article class="single-post">
+    <header class="single-post-header">
+        <span class="post-date"><%= post.Date.toLocaleDateString() %></span>
+        <h1><%= post.title %></h1>
+    </header>
+    <div class="single-post-content">
+        <p><%= post.content %></p>
+    </div>
+
+    <div class="post-management-actions">
+        <a href="/posts/<%= post.id %>/edit" class="btn btn-edit">Edit Post</a>
+        <form action="/posts/<%= post.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');" style="display:inline;">
+            <button type="submit" class="btn btn-delete">Delete</button>
+        </form>
+    </div>
+
+    <div class="single-post-footer">
+        <a href="/" class="back-link">&larr; Back to Home</a>
+    </div>
+</article>
+
+<%- include('partials/footer') %>
